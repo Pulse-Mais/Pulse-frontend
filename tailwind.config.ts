@@ -1,10 +1,13 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
+const {nextui} = require("@nextui-org/react");
 
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -27,12 +30,33 @@ const config: Config = {
           '900': '#0056b3',
           '950': '#003870',
         },
+        'amber': {
+          '50': '#ffffea',
+          '100': '#fffbc5',
+          '200': '#fff885',
+          '300': '#ffed46',
+          '400': '#ffdf1b',
+          '500': '#ffbf00',
+          '600': '#e29300',
+          '700': '#bb6802',
+          '800': '#985008',
+          '900': '#7c420b',
+          '950': '#482200',
+        },
+        "picton-blue": {
+          '400': "#16aaff",
+        },
       },
       borderWidth: {
         "1": "1px",
       }
     },
   },
-  plugins: [],
+  darkMode: "class",
+  plugins: [  
+    nextui(),
+    require("@tailwindcss/typography"),
+    // plugin(({ addUtilities, addComponents, e, config }) => {}) 
+  ],
 };
 export default config;
